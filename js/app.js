@@ -1,22 +1,24 @@
 
 const card = document.querySelectorAll('.card');
 const cardBody = document.querySelectorAll('.card-body');
-const cardsArray = [], shuffleArray = [];
+const cardImage = document.querySelectorAll('i');
+let deckOfCards = [], shuffleCards = [];
 
 
-for(let i = 0; i < cardBody.length; i++){
-  cardBody[i].remove();
-  while(shuffleArray.length < 16){
+for(let singleCard in cardBody){
+  while(shuffleCards.length < 16){
     let randomNum = Math.floor(Math.random() * card.length);
-    if(shuffleArray.indexOf(randomNum) > -1) continue;
-    shuffleArray[shuffleArray.length] = randomNum;
-    cardsArray.push(cardBody[randomNum]);
+    if(shuffleCards.indexOf(randomNum) > -1){
+      continue;
+    }
+    shuffleCards[shuffleCards.length] = randomNum;
+    deckOfCards.push(cardBody[randomNum]);
   }
 }
 
-for(let j = 0; j < cardsArray.length; j++){
-  card[j].append(cardsArray[j]);
-  cardBody[j].addEventListener('click', function() {
-    cardBody[j].classList.toggle('flipped');
+for(let cards in deckOfCards){
+  card[cards].append(deckOfCards[cards]);
+  cardBody[cards].addEventListener('click', function() {
+    cardBody[cards].classList.toggle('flipped');
   });
 }
