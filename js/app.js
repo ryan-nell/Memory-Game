@@ -93,3 +93,16 @@ function unmatched(){
     secondCard.parentElement.classList.remove('miss-match');
 
   }, 1300);
+  //timeout function to remove flipped class after 1000ms
+  setTimeout(function(){
+    firstGrandParent =  firstCard.closest('.card-body');
+    secondGrandParent = secondCard.closest('.card-body');
+    enableUnmatched();
+    firstGrandParent.classList.remove('flipped');
+    secondGrandParent.classList.remove('flipped');
+    console.log('try again');
+
+  }, 1000);
+  matchCards = [];
+  console.log(matchCards);
+}
