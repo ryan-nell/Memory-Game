@@ -77,3 +77,19 @@ function match(){
   }, 800);
 
 }
+
+function unmatched(){
+
+  //timeout function to add miss-match class after 800ms
+  setTimeout(function(){
+    firstCard.parentElement.classList.add('miss-match');
+    secondCard.parentElement.classList.add('miss-match');
+
+  }, 800);
+  disableAll();
+  //timeout function to remove miss-match class after 1200ms
+  setTimeout(function(){
+    firstCard.parentElement.classList.remove('miss-match');
+    secondCard.parentElement.classList.remove('miss-match');
+
+  }, 1300);
