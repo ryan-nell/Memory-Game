@@ -112,3 +112,10 @@ function disableAll(){
         card.parentElement.classList.add('disabled');
     });
 }
+
+function enableUnmatched(){
+    Array.prototype.filter.call(deckOfCards, function(card){
+        card.parentElement.classList.remove('disabled');
+      });
+      disableMatched();
+}
