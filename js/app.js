@@ -2,7 +2,7 @@
 const card = document.querySelectorAll('.card');
 const cardBody = document.querySelectorAll('.card-body');
 const cardImage = document.querySelectorAll('i');
-let deckOfCards = [], shuffleCards = [], matchCards = [];
+let deckOfCards = [], shuffleCards = [], matchCards = [], finalArray = [];
 let firstCard, secondCard;
 
 //shuffle the cards when the page loads
@@ -23,27 +23,24 @@ function shuffleDeckOfCards(){
       deckOfCards.push(cardBody[randomNum]);
     }
   }
-
   // loop through each card within the deckOfCards array and append the newly
   // shuffled cards to the card container
   for(let cards in deckOfCards){
     //Add shuffled cards to the card containers
     card[cards].append(deckOfCards[cards]);
     cardBody[cards].addEventListener('click', function() {
-      cardBody[cards].classList.toggle('flipped');
-
+      cardBody[cards].classList.add('flipped');
+      cardBody[cards].parentElement.classList.add('disabled');
+      //Add cards to an array for comparison
       matchCards.push(cardImage[cards]);
-      console.log(matchCards)
+      //console.log(matchCards)
       checkCards();
     });
   }
-  console.log(deckOfCards);
 }
 
 //Fucntion to check if cards match
 function checkCards(){
-  //Add cards to an array for comparison
-
   if(matchCards.length == 2){
 
     firstCard = matchCards[0];
@@ -51,12 +48,17 @@ function checkCards(){
 
     if(firstCard.className == secondCard.className){
 
+      for(let populate in matchCards){
+        finalArray.push(matchCards[populate]);
+      }
+
       console.log(matchCards);
       console.log('Cards Match');
-
+      console.log(finalArray);
+      match();
     }
     else{
-      //cardsDontMatch();
+      unmatched();
       console.log('Cards do not Match');
     }
     matchCards = [];
@@ -93,6 +95,7 @@ function unmatched(){
     secondCard.parentElement.classList.remove('miss-match');
 
   }, 1300);
+
   //timeout function to remove flipped class after 1000ms
   setTimeout(function(){
     firstGrandParent =  firstCard.closest('.card-body');
