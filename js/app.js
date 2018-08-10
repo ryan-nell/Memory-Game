@@ -106,3 +106,9 @@ function unmatched(){
   matchCards = [];
   console.log(matchCards);
 }
+
+function disableAll(){
+    Array.prototype.filter.call(deckOfCards, function(card){
+        card.parentElement.classList.add('disabled');
+    });
+}
