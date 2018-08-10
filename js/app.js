@@ -119,3 +119,10 @@ function enableUnmatched(){
       });
       disableMatched();
 }
+
+function disableMatched(){
+  for(let i = 0; i < finalArray.length; i++){
+    let parentCard = finalArray[i].closest('.card');
+    parentCard.classList.add('disabled');
+  }
+}
