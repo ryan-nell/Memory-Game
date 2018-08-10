@@ -29,6 +29,36 @@ function shuffleDeckOfCards(){
   for(let cards in deckOfCards){
     //Add shuffled cards to the card containers
     card[cards].append(deckOfCards[cards]);
+    cardBody[cards].addEventListener('click', function() {
+      cardBody[cards].classList.toggle('flipped');
+
+      matchCards.push(cardImage[cards]);
+      console.log(matchCards)
+      checkCards();
+    });
   }
   console.log(deckOfCards);
+}
+
+//Fucntion to check if cards match
+function checkCards(){
+  //Add cards to an array for comparison
+
+  if(matchCards.length == 2){
+
+    firstCard = matchCards[0];
+    secondCard = matchCards[1];
+
+    if(firstCard.className == secondCard.className){
+
+      console.log(matchCards);
+      console.log('Cards Match');
+
+    }
+    else{
+      //cardsDontMatch();
+      console.log('Cards do not Match');
+    }
+    matchCards = [];
+  }
 }
