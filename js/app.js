@@ -62,3 +62,18 @@ function checkCards(){
     matchCards = [];
   }
 }
+
+//Add a mactched class to the divs if the cards match after 800ms
+function match(){
+  setTimeout(function(){
+    let firstGreatGrandParent = firstCard.closest('.card');
+    let secondGreatGrandParent = firstCard.closest('.card');
+
+    firstCard.parentElement.classList.add('matched');
+    secondCard.parentElement.classList.add('matched');
+
+    firstGreatGrandParent.classList.add('disabled');
+    secondGreatGrandParent.classList.add('disabled');
+  }, 800);
+
+}
