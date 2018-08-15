@@ -37,6 +37,27 @@
     <main>
       <!-- Main container -->
       <div class="container main-container">
+        <!-- Row for counter, stars and timer -->
+        <div class="row counter-row">
+          <div class="col-4 move-counter">
+            Moves Made: 0
+          </div>
+          <div class="col-4 stars"> Stars Remaining:
+            <span class="fas fa-star"></span>
+            <span class="fas fa-star"></span>
+            <span class="fas fa-star"></span>
+          </div>
+          <div class="col-4 timer">Timer:
+            <span class="time hr2">0</span>
+            <span class="time hr1">0</span>
+            :
+            <span class="time min2">0</span>
+            <span class="time min1">0</span>
+            :
+            <span class="time sec2">0</span>
+            <span class="time sec1">0</span>
+          </div>
+        </div>
         <!-- First row of cards -->
         <div class="row card-row">
           <div class="col-3">
@@ -195,13 +216,15 @@
                 <div class="front-side">
                   <i class="fas fa-user-astronaut"></i>
                 </div>
+
                 <div class="back-side"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
+
     </main>
-  <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
   </body>
 </html>
