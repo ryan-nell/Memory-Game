@@ -2,8 +2,9 @@
 const card = document.querySelectorAll('.card');
 const cardBody = document.querySelectorAll('.card-body');
 const cardImage = document.querySelectorAll('i');
-let deckOfCards = [], shuffleCards = [], matchCards = [], finalArray = [];
-let firstCard, secondCard;
+const stars = document.querySelectorAll('.fa-star');
+const moves = document.querySelector('.move-counter');
+
 
 //shuffle the cards when the page loads
 document.body.onload = shuffleDeckOfCards();
@@ -47,13 +48,14 @@ function checkCards(){
     secondCard = matchCards[1];
 
     if(firstCard.className == secondCard.className){
-
+      //Loop through matched cards and push them to finalArray
       for(let populate in matchCards){
         finalArray.push(matchCards[populate]);
+        //if Array has 16 Elements, call showModal function
+        if(finalArray.length == 16){
+          showModal();
+        }
       }
-
-      console.log(matchCards);
-      console.log('Cards Match');
       console.log(finalArray);
       match();
     }
@@ -128,4 +130,9 @@ function disableMatched(){
     let parentCard = finalArray[i].closest('.card');
     parentCard.classList.add('disabled');
   }
+}
+
+//Show Modal
+function showModal(){
+  $("#game-over-modal").modal();
 }
