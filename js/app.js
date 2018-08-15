@@ -147,4 +147,20 @@ function movesCounter(){
   counter++;
   moves.innerHTML = `Moves Made: ${counter}`;
   console.log(counter);
+  updateStars();
+}
+
+//Function to change the stars classes after certain amount of moves
+function updateStars(){
+  for(let star in stars){
+    if(counter > 8 && counter < 15){
+      stars[2].classList.add('star-colour');
+    }
+    if(counter > 16 && counter < 23){
+      stars[1].classList.add('star-colour');
+    }
+    if(counter > 24){
+      stars[0].classList.add('star-colour');
+    }
+  }
 }
