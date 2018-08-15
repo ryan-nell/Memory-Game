@@ -10,7 +10,7 @@ let firstCard, secondCard, timer, counter = 0;
 
 //shuffle the cards when the page loads
 document.body.onload = shuffleDeckOfCards();
-
+startTimer();
 //function to shuffle cards
 function shuffleDeckOfCards(){
   //loop using length of cardbody
@@ -29,7 +29,6 @@ function shuffleDeckOfCards(){
   // loop through each card within the deckOfCards array and append the newly
   // shuffled cards to the card container
   for(let cards in deckOfCards){
-    startTimer();
     //Add shuffled cards to the card containers
     card[cards].append(deckOfCards[cards]);
     cardBody[cards].addEventListener('click', function() {
@@ -40,6 +39,7 @@ function shuffleDeckOfCards(){
       //console.log(matchCards)
       checkCards();
     });
+
   }
 }
 
@@ -141,6 +141,7 @@ function disableMatched(){
 //Show Modal function
 function showModal(){
   $("#game-over-modal").modal();
+  stopTimer();
 }
 
 //Function to update the move counter
@@ -215,4 +216,9 @@ function startTimer(){
       h1 = 00;
     }
   }, 1000);
+}
+
+//Function to stop timer by clearing the interval
+function stopTimer(){
+  clearInterval(timer);
 }
