@@ -56,5 +56,17 @@
 
 .disabled {
 pointer-events: none;
+}
 
+.fa-star{
+  color: #f4c300;
+}
+
+.star-colour{
+  color: black !important;
+  opacity: 0.5;
+}
+
+.time{
+  margin: -2px;
 }
