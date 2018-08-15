@@ -88,6 +88,7 @@ function match(){
 
 }
 
+//Funtion to change classes if cards are unmatched
 function unmatched(){
 
   //timeout function to add miss-match class after 800ms
@@ -118,12 +119,14 @@ function unmatched(){
   console.log(matchCards);
 }
 
+//Function to disable all cards
 function disableAll(){
     Array.prototype.filter.call(deckOfCards, function(card){
         card.parentElement.classList.add('disabled');
     });
 }
 
+//Funtion to re-enable any cards that have not been matched
 function enableUnmatched(){
     Array.prototype.filter.call(deckOfCards, function(card){
         card.parentElement.classList.remove('disabled');
@@ -131,6 +134,7 @@ function enableUnmatched(){
       disableMatched();
 }
 
+//function to disable any cards that have a matching pair
 function disableMatched(){
   for(let i = 0; i < finalArray.length; i++){
     let parentCard = finalArray[i].closest('.card');
@@ -221,4 +225,9 @@ function startTimer(){
 //Function to stop timer by clearing the interval
 function stopTimer(){
   clearInterval(timer);
+}
+
+//Function to reload page
+function reloadPage(){
+  location.reload();
 }
