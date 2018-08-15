@@ -5,6 +5,8 @@ const cardImage = document.querySelectorAll('i');
 const stars = document.querySelectorAll('.fa-star');
 const moves = document.querySelector('.move-counter');
 
+let deckOfCards = [], shuffleCards = [], matchCards = [], finalArray = [];
+let firstCard, secondCard, timer, counter = 0;
 
 //shuffle the cards when the page loads
 document.body.onload = shuffleDeckOfCards();
@@ -46,6 +48,9 @@ function checkCards(){
 
     firstCard = matchCards[0];
     secondCard = matchCards[1];
+
+    //Call moves counter to update number of moves made
+    movesCounter();
 
     if(firstCard.className == secondCard.className){
       //Loop through matched cards and push them to finalArray
@@ -132,7 +137,14 @@ function disableMatched(){
   }
 }
 
-//Show Modal
+//Show Modal function
 function showModal(){
   $("#game-over-modal").modal();
+}
+
+//Function to update the move counter
+function movesCounter(){
+  counter++;
+  moves.innerHTML = `Moves Made: ${counter}`;
+  console.log(counter);
 }
