@@ -4,9 +4,10 @@ const cardBody = document.querySelectorAll('.card-body');
 const cardImage = document.querySelectorAll('i');
 const stars = document.querySelectorAll('.fa-star');
 const moves = document.querySelector('.move-counter');
+const timerDiv = document.querySelector('.timer');
 
 let deckOfCards = [], shuffleCards = [], matchCards = [], finalArray = [];
-let firstCard, secondCard, timer, counter = 0;
+let firstCard, secondCard, timer, counter = 0, totalStars = 3;
 
 //shuffle the cards when the page loads
 document.body.onload = shuffleDeckOfCards();
@@ -146,6 +147,7 @@ function disableMatched(){
 function showModal(){
   $("#game-over-modal").modal();
   stopTimer();
+  results();
 }
 
 //Function to update the move counter
@@ -161,12 +163,15 @@ function updateStars(){
   for(let star in stars){
     if(counter > 8 && counter < 15){
       stars[2].classList.add('star-colour');
+      totalStars = 2;
     }
     if(counter > 16 && counter < 23){
       stars[1].classList.add('star-colour');
+      totalStars = 1;
     }
     if(counter > 24){
       stars[0].classList.add('star-colour');
+      totalStars = 0;
     }
   }
 }
@@ -230,4 +235,19 @@ function stopTimer(){
 //Function to reload page
 function reloadPage(){
   location.reload();
+}
+
+//function to display stats in the modal view
+function results(){
+  totalMoves = moves.innerHTML;
+  totalTime = timerDiv.innerHTML;
+
+  let modalStars = document.querySelector('.total-stars');
+  let modalTimer = document.querySelector('.total-time');
+  let modalMoves = document.querySelector('.total-moves');
+
+  modalMoves.innerHTML = totalMoves;
+  modalTimer.innerHTML = totalTime;
+  modalStars.innerHTML = `Stars remaining: ${totalStars}`
+
 }

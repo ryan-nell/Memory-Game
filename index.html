@@ -35,8 +35,7 @@
 
     <!-- Main section -->
     <main>
-      <!-- Main container -->
-      <div class="container main-container">
+      <div class="container stats-container">
         <!-- Row for counter, stars and timer -->
         <div class="row counter-row">
           <div class="col-4 move-counter">
@@ -58,6 +57,9 @@
             <span class="time sec1">0</span>
           </div>
         </div>
+      </div>
+      <!-- Main container -->
+      <div class="container main-container">
         <!-- First row of cards -->
         <div class="row card-row">
           <div class="col-3">
@@ -228,17 +230,19 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="game-over-modal-label">Modal title</h5>
+                <h5 class="modal-title" id="game-over-modal-label">Congratulations, You Won!</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
               <div class="modal-body">
-                GAME OVER
+                <span class="far fa-smile-beam"></span>
+                <div class="total-moves"></div>
+                <div class="total-stars"></div>
+                <div class="total-time"></div>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" onclick="reloadPage()">Play Again</button>
               </div>
             </div>
           </div>
