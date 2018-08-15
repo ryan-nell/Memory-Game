@@ -29,6 +29,7 @@ function shuffleDeckOfCards(){
   // loop through each card within the deckOfCards array and append the newly
   // shuffled cards to the card container
   for(let cards in deckOfCards){
+    startTimer();
     //Add shuffled cards to the card containers
     card[cards].append(deckOfCards[cards]);
     cardBody[cards].addEventListener('click', function() {
@@ -163,4 +164,55 @@ function updateStars(){
       stars[0].classList.add('star-colour');
     }
   }
+}
+
+//function to start the timer
+function startTimer(){
+  let s1 = 0, s2 = 0, m1 = 0, m2 = 0, h1 = 0, h2 = 0;
+
+  //Select each div for seconds, minutes and hours by their classes
+  let sec1 = document.querySelector(".sec1");
+  let sec2 = document.querySelector(".sec2");
+
+  let min1 = document.querySelector(".min1");
+  let min2 = document.querySelector(".min2");
+
+  let hr1 = document.querySelector(".hr1");
+  let hr2 = document.querySelector(".hr2");
+
+  //Set interval to increment the timer every one second to have a clock like display
+  timer = setInterval(function(){
+    //Set the innerHTML of each div to update the timer
+    sec1.innerHTML = s1;
+    sec2.innerHTML = s2;
+
+    min1.innerHTML = m1;
+    min2.innerHTML = m2;
+
+    hr1.innerHTML = h1;
+    hr2.innerHTML = h2;
+
+    //increment each variable based on the time that has elapsed
+    s1++;
+    if(s1 == 10){
+      s2++;
+      s1 = 00;
+    }
+    if(s2 == 6){
+      m1++;
+      s2 = 00;
+    }
+    if(m1 == 10){
+      m2++;
+      m1 = 00;
+    }
+    if(m2 == 6){
+      h1++;
+      m2 = 00;
+    }
+    if(h1 == 10){
+      h2++;
+      h1 = 00;
+    }
+  }, 1000);
 }
