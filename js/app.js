@@ -32,12 +32,13 @@ function shuffleDeckOfCards(){
   for(let cards in deckOfCards){
     //Add shuffled cards to the card containers
     card[cards].append(deckOfCards[cards]);
+    //Add event listener to each cardBody
     cardBody[cards].addEventListener('click', function() {
       cardBody[cards].classList.add('flipped');
+      //Disable the card if it was been clicked
       cardBody[cards].parentElement.classList.add('disabled');
       //Add cards to an array for comparison
       matchCards.push(cardImage[cards]);
-      //console.log(matchCards)
       checkCards();
     });
 
@@ -48,12 +49,14 @@ function shuffleDeckOfCards(){
 function checkCards(){
   if(matchCards.length == 2){
 
+    //variables to hold the elements from the array
     firstCard = matchCards[0];
     secondCard = matchCards[1];
 
     //Call moves counter to update number of moves made
     movesCounter();
 
+    //Check if the elements match
     if(firstCard.className == secondCard.className){
       //Loop through matched cards and push them to finalArray
       for(let populate in matchCards){
@@ -63,13 +66,14 @@ function checkCards(){
           showModal();
         }
       }
-      console.log(finalArray);
+      //Call macth functions if the cards are the same
       match();
     }
     else{
+      //If cards dont match, call unmatched function
       unmatched();
-      console.log('Cards do not Match');
     }
+    //Clear the array because we only want to elements in at a time
     matchCards = [];
   }
 }
@@ -77,12 +81,15 @@ function checkCards(){
 //Add a mactched class to the divs if the cards match after 800ms
 function match(){
   setTimeout(function(){
+    //card icons assigned to variables
     let firstGreatGrandParent = firstCard.closest('.card');
-    let secondGreatGrandParent = firstCard.closest('.card');
+    let secondGreatGrandParent = secondCard.closest('.card');
 
+    //Add matched class to front-side div
     firstCard.parentElement.classList.add('matched');
     secondCard.parentElement.classList.add('matched');
 
+    //Add diabled class to card divs
     firstGreatGrandParent.classList.add('disabled');
     secondGreatGrandParent.classList.add('disabled');
   }, 800);
@@ -96,8 +103,8 @@ function unmatched(){
   setTimeout(function(){
     firstCard.parentElement.classList.add('miss-match');
     secondCard.parentElement.classList.add('miss-match');
-
   }, 800);
+
   disableAll();
   //timeout function to remove miss-match class after 1200ms
   setTimeout(function(){
@@ -110,51 +117,62 @@ function unmatched(){
   setTimeout(function(){
     firstGrandParent =  firstCard.closest('.card-body');
     secondGrandParent = secondCard.closest('.card-body');
+
+    //call enableUnmatched function to re-enable diabled cards
     enableUnmatched();
+
+    //Remove flip from the card so it rotates back to the back side
     firstGrandParent.classList.remove('flipped');
     secondGrandParent.classList.remove('flipped');
-    console.log('try again');
-
   }, 1000);
+  //clear array
   matchCards = [];
-  console.log(matchCards);
 }
 
 //Function to disable all cards
 function disableAll(){
-    Array.prototype.filter.call(deckOfCards, function(card){
-        card.parentElement.classList.add('disabled');
-    });
+  Array.prototype.filter.call(deckOfCards, function(card){
+    //Add disabled class to card div
+    card.parentElement.classList.add('disabled');
+  });
 }
 
 //Funtion to re-enable any cards that have not been matched
 function enableUnmatched(){
-    Array.prototype.filter.call(deckOfCards, function(card){
-        card.parentElement.classList.remove('disabled');
-      });
-      disableMatched();
+  Array.prototype.filter.call(deckOfCards, function(card){
+      // removes disabled class from card div
+      card.parentElement.classList.remove('disabled');
+    });
+  //Call disableMatched function to permantly disable matched cards
+  disableMatched();
 }
 
 //function to disable any cards that have a matching pair
 function disableMatched(){
   for(let i = 0; i < finalArray.length; i++){
     let parentCard = finalArray[i].closest('.card');
+    //Add the disabled class to the elements within the finalArray
     parentCard.classList.add('disabled');
   }
 }
 
 //Show Modal function
 function showModal(){
+  //Using bootstraps modal function to display the modal
   $("#game-over-modal").modal();
+  //Call stopTimer function to stop the clock when the modal displays
   stopTimer();
+  //Call results function to display the users results
   results();
 }
 
 //Function to update the move counter
 function movesCounter(){
+  //increment counter by one each time
   counter++;
+  //Updates moves inner html with the counter data
   moves.innerHTML = `Moves Made: ${counter}`;
-  console.log(counter);
+  //updateStars function when the counter increments to a certain value
   updateStars();
 }
 
@@ -249,5 +267,4 @@ function results(){
   modalMoves.innerHTML = totalMoves;
   modalTimer.innerHTML = totalTime;
   modalStars.innerHTML = `Stars remaining: ${totalStars}`
-
 }
