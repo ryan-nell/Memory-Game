@@ -1,57 +1,114 @@
-.container{
-  margin: 50px;
+html,
+body {
+    margin: 0;
+    height: 100%;
+}
+body{
+  background: #FFEFBA;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #FFFFFF, #FFEFBA);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #FFFFFF, #FFEFBA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.header-container{
+  margin: 0px auto;
+  margin-bottom: 2%;
+}
+
+.counter-row{
+  margin-right: 6%;
+}
+
+.page-heading{
+  font-family: 'Amatic SC', cursive;
+  font-size: 70px;
+  text-align: center;
+  margin-bottom: -2%;
+}
+
+main{
+  margin-top: 0px auto;
+}
+
+.main-container{
+  background: #BBD2C5;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #536976, #BBD2C5);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #536976, #BBD2C5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-radius: 20px;
+  max-width: 600px;
+  padding: 2%;
+}
+
+.stats-container{
+  margin-left: 15%;
 }
 
 .card{
-  position: relative;
-  width: 120px;
-  height: 120px;
-  cursor: pointer;
+ position: relative;
+ width: 110px;
+ height: 110px;
+ cursor: pointer;
+ background-color: inherit;
+ border-radius: 10px;
+}
+
+.card-row{
+  padding: 2px;
+  margin-left: 0%;
 }
 
 .card-body{
-  padding: 0px !important;
-  transform-style: preserve-3d;
-  transition: transform 1s;
-  cursor: pointer;
+ padding: 0px !important;
+ transform-style: preserve-3d;
+ transition: transform 1s;
+ cursor: pointer;
+ border-radius: 10px;
 }
 
 .card-face{
-  text-align: center !important;
-  color: white;
-  font-size: 80px;
+ text-align: center !important;
+ color: white;
+ font-size: 80px;
 }
 
 .front-side{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  transform: rotateY(180deg);
-  background-color: #32e5c1;
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ backface-visibility: hidden;
+ transform: rotateY(180deg);
+ background: #56ab2f;  /* fallback for old browsers */
+ background: -webkit-linear-gradient(to top, #a8e063, #56ab2f);  /* Chrome 10-25, Safari 5.1-6 */
+ background: linear-gradient(to top, #a8e063, #56ab2f); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ border-radius: 10px;
 }
 
 .back-side{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  background-color: #353a42;
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ backface-visibility: hidden;
+ background-color: #383838;
+ border-radius: 10px;
 }
 
 .flipped{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  transform: rotateY(180deg);
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ transform: rotateY(180deg);
 }
 
 .matched{
-  background-color: blue;
+  background: #667db6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 .miss-match{
-  background-color: red !important;
+  background: #EB3349 !important;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #F45C43, #EB3349) !important;  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #F45C43, #EB3349) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .disabled {
@@ -59,14 +116,25 @@ pointer-events: none;
 }
 
 .fa-star{
-  color: #f4c300;
+ color: #f4c300;
 }
 
 .star-colour{
-  color: black !important;
-  opacity: 0.5;
+ color: black !important;
+ opacity: 0.5;
 }
 
 .time{
-  margin: -2px;
+ margin: -2px;
+}
+
+.modal-body{
+  text-align: center;
+}
+
+.fa-smile-beam{
+  font-size: 80px;
+  color: #ffb347;  /* fallback for old browsers */
+  color: -webkit-linear-gradient(to top, #ffcc33, #ffb347);  /* Chrome 10-25, Safari 5.1-6 */
+  color: linear-gradient(to top, #ffcc33, #ffb347); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
