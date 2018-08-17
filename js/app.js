@@ -183,13 +183,9 @@ function updateStars(){
       stars[2].classList.add('star-colour');
       totalStars = 2;
     }
-    if(counter > 16 && counter < 23){
+    if(counter > 16){
       stars[1].classList.add('star-colour');
       totalStars = 1;
-    }
-    if(counter > 24){
-      stars[0].classList.add('star-colour');
-      totalStars = 0;
     }
   }
 }
